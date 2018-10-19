@@ -40,15 +40,15 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img width="40" height="40" alt="<?php echo htmlspecialchars($userinfo['name'], ENT_NOQUOTES); ?>" src="<?php echo $userinfo['avatar']; ?>">
+                            <img width="40" height="40" alt="<?php echo htmlspecialchars($userinfo['name'], ENT_NOQUOTES); ?>" src="<?php echo $userinfo['avatar'] ? htmlspecialchars($userinfo['avatar'], ENT_NOQUOTES) : DEFAULT_AVATAR; ?>">
                             <span class="username"><?php echo htmlspecialchars($userinfo['name'], ENT_NOQUOTES); ?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
-                            <li><a href="index.php?m=user&a=set"><i class="icon-cog"></i><?php echo t('设置'); ?></a></li>
-                            <li><a href="index.php?m=user&a=person"><i class="icon-suitcase"></i><?php echo t('简介'); ?></a></li>
-                            <li><a href="#"><i class="icon-bell-alt"></i><?php echo t('消息'); ?></a></li>
+                            <li><a href="index.php?m=user&a=set"><i class="icon-edit"></i><?php echo t('编辑'); ?></a></li>
+                            <li><a href="index.php?m=user&a=person"><i class="icon-eye-open"></i><?php echo t('查看'); ?></a></li>
+                            <li><a href="index.php?m=user&a=avatar"><i class="icon-cog"></i><?php echo t('设置头像'); ?></a></li>
                             <li><a href="index.php?m=user&a=logout"><i class="icon-key"></i><?php echo t('退出'); ?></a></li>
                         </ul>
                     </li>
@@ -59,6 +59,23 @@
         <?php } ?>
     </header>
     <section class="wrapper">
+        <div class="row" style="background-image:url(img/bg0.jpg); border-bottom: 1px solid #bbb;height: 190px;margin-top: -20px;">
+            <div class="container">
+                <div class="col-md-2 col-sm-3 col-xs-6" style="padding-left:0;float:left;">
+                    <div style="margin-top: 22px;">
+                        <img src="<?php echo $userinfo['avatar'] ? htmlspecialchars($userinfo['avatar'], ENT_NOQUOTES) : DEFAULT_AVATAR; ?>" width="143px" height="143px"/>
+                    </div>
+                </div>
+                <div style="margin-top: 22px;float:left;">
+                    <div class="form-group">
+                        <h3><?php echo htmlspecialchars($userinfo['name'], ENT_NOQUOTES); ?></h3>
+                    </div>
+                    <div class="form-group">
+                        Email : <?php echo htmlspecialchars($userinfo['email'], ENT_NOQUOTES); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-4" style="top:50px; float: none;display: block; margin:auto;">
                 <div class="box box-primary">
